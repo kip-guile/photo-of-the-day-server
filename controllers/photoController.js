@@ -1,6 +1,7 @@
 const Photos = require('../models/photos')
 const { validatePhotoObject } = require('../middleware/validatePhotoObject')
 
+// controller to add photo
 const addPhoto = (req, res) => {
   const { errors, valid } = validatePhotoObject(req.body)
   if (!valid) return res.status(400).json(errors)
@@ -29,6 +30,7 @@ const addPhoto = (req, res) => {
   })
 }
 
+// controller to get all photos
 async function getPhotos(req, res) {
   try {
     const photos = await Photos.find({})
@@ -41,6 +43,7 @@ async function getPhotos(req, res) {
   }
 }
 
+// controller to delete photo
 async function deletePhoto(req, res) {
   const date = req.params.photoId
 

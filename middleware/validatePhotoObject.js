@@ -1,5 +1,6 @@
 const { isEmpty } = require('../helpers/isEmpty')
 
+// middleware to validate input
 exports.validatePhotoObject = (data) => {
   const errors = {}
   let { title, url, explanation, date } = data
