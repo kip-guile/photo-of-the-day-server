@@ -5,7 +5,7 @@ const { validatePhotoObject } = require('../middleware/validatePhotoObject')
 const addPhoto = (req, res) => {
   const { errors, valid } = validatePhotoObject(req.body)
   if (!valid) return res.status(400).json(errors)
-  const { title, url, explanation, date } = req.body
+  const { title, url, explanation, date, media_type } = req.body
 
   Photos.findOne({ date }).then((photo) => {
     if (photo)
