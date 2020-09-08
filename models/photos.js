@@ -25,6 +25,11 @@ const photoSchema = new mongoose.Schema({
     unique: true,
     trim: true,
   },
+  media_type: {
+    type: String,
+    required: true,
+    trim: true,
+  },
 })
 
 const Photos = mongoose.model('user', photoSchema)

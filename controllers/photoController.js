@@ -17,6 +17,7 @@ const addPhoto = (req, res) => {
       explanation,
       url,
       date,
+      media_type,
     })
 
     newPhoto
