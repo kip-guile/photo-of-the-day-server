@@ -15,7 +15,7 @@ server.use(logger)
 server.use(express.json())
 server.use(
   cors({
-    origin: ['http://localhost:3000', 'https://photo-of-the-day.vercel.app/'],
+    origin: ['http://localhost:3000', 'https://photo-of-the-day.vercel.app'],
     credentials: true,
   })
 )
