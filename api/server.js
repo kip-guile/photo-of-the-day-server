@@ -5,21 +5,24 @@ const cors = require('cors')
 const mongoURI = require('../config/keys')
 const mongoose = require('mongoose')
 
+//photo route
 const photoRouter = require('../routes/photoRouter')
 
+//initializations
 const server = express()
 server.use(helmet())
 server.use(logger)
 server.use(express.json())
 server.use(
   cors({
-    origin: ['http://localhost:3000'],
+    origin: ['http://localhost:3000', 'https://photo-of-the-day.vercel.app/'],
     credentials: true,
   })
 )
 
 server.use('/api/photos', photoRouter)
 
+//connect to mongodb
 mongoose
   .connect(mongoURI, {
     useNewUrlParser: true,
@@ -36,6 +39,7 @@ server.get('/', (req, res) => {
   return res.status(200).json({ message: 'API is up 🚀' })
 })
 
+//logger function
 function logger(req, res, next) {
   console.log(`${req.method} to ${req.originalUrl}`)
   next()
