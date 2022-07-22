@@ -8,6 +8,9 @@ const mongoose = require('mongoose')
 //photo route
 const photoRouter = require('../routes/photoRouter')
 
+//movie route
+const movieRouter = require('../routes/movieRouter')
+
 //initializations
 const server = express()
 server.use(helmet())
@@ -21,6 +24,7 @@ server.use(
 )
 
 server.use('/api/photos', photoRouter)
+server.use('/api/movies', movieRouter)
 
 //connect to mongodb
 mongoose

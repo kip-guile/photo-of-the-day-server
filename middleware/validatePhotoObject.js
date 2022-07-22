@@ -21,3 +21,20 @@ exports.validatePhotoObject = (data) => {
     valid: Object.keys(errors).length === 0 ? true : false,
   }
 }
+
+exports.validateMovieObject = (data) => {
+  const errors = {}
+  let { title, image_url, review } = data
+  title = title || ''
+  image_url = image_url || ''
+  review = review || ''
+
+  if (isEmpty(title)) errors.title = 'Title is required'
+  if (isEmpty(image_url)) errors.image_url = 'Img Url is required'
+  if (isEmpty(review)) errors.review = 'review is required'
+
+  return {
+    errors,
+    valid: Object.keys(errors).length === 0 ? true : false,
+  }
+}
