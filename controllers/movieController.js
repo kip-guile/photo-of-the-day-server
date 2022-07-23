@@ -40,6 +40,19 @@ async function getMovies(req, res) {
   }
 }
 
+async function getMovieById(req, res) {
+  const id = req.params.movieId
+  try {
+    const movie = await Movies.findById({ _id: id })
+    if (!movie) {
+      return res.status(404).json({ message: 'movie doesnt exist' })
+    }
+    return res.status(200).json(movie)
+  } catch {
+    res.status(500).json(err.message)
+  }
+}
+
 async function deleteMovie(req, res) {
   const id = req.params.movieId
 
@@ -84,4 +97,4 @@ async function updateMovie(req, res) {
   }
 }
 
-module.exports = { addMovie, getMovies, deleteMovie, updateMovie }
+module.exports = { addMovie, getMovies, deleteMovie, updateMovie, getMovieById }
